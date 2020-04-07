@@ -103,6 +103,6 @@
   loop: "{{ theme_cfg }}"
   tags: install_themes
 
-  #- name: Reboot Machine
-  #shell: shutdown -r +0
+- name: Reboot Machine
+  shell: shutdown -r +0
   
