@@ -6,7 +6,7 @@ function GTERM_LOAD()
 	GTERM_DIR="$HOME/.gterm"
 	GTERM_FILE="$GTERM_DIR/gterm-profile.dconf"
 	GTERM_RC="$GTERM_DIR/gterm.rc"
-	GTERM_URL="https://raw.githubusercontent.com/rm-tic/vagabondv2/master/gterm-profile.dconf"
+	GTERM_URL="https://raw.githubusercontent.com/rm-tic/vagabond/master/gterm-profile.dconf"
 
 
 	if [ "$(cat $GTERM_RC 2> /dev/null)" != "0" ]; then
@@ -103,8 +103,8 @@ function INSTALL()
 
 function CLONE_REPO()
 {
-	REPO_DIR="/tmp/$$/vagabondv2"
-	REPO_URL="https://github.com/rm-tic/vagabondv2.git"
+	REPO_DIR="/tmp/$$/vagabond"
+	REPO_URL="https://github.com/rm-tic/vagabond.git"
 
 	echo "Cloning Repository in $REPO_DIR"
 
