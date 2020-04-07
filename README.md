@@ -1,0 +1,2 @@
+# vagabond
+Ansible Provision Workstation
