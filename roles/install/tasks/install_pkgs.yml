@@ -1,0 +1,59 @@
+---
+
+- name: Include Task repo.yml
+  include: add_repo.yml
+
+- name: Include Task latest.yml
+  include: url_deb_latest.yml
+
+- name: Update Repository
+  apt:
+    update-cache: yes
+  tags: apt_update
+
+- name: Install Packages .deb from URL
+  apt:
+    deb: "{{ item }}"
+    state: present
+  loop: "{{ pkgs_urls }}"
+  tags: pkgs_install
+
+- name: Install Packages from Repository
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ pkgs }}"
+  tags: pkgs_install
+
+- name: Install Docker
+  shell: >
+    curl -fsSL https://get.docker.com | bash -
+  tags: pkgs_install
+
+- name: Install Oh My Zsh!
+  shell: >
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  tags: ohmyzsh_install
+
+- name: Copy ZSH Template for ~/.zshrc
+  copy:
+    src: "{{ ansible_env.HOME }}/.oh-my-zsh/templates/zshrc.zsh-template"
+    dest: "{{ ansible_env.HOME }}/.zshrc"
+    remote_src: yes
+  tags: ohmyzsh_install
+
+- name: Change Default SHELL to ZSH
+  user:
+    name: "{{ ansible_env.SUDO_USER }}"
+    shell: /usr/bin/zsh
+  tags: ohmyzsh_install
+
+#- name: Create Profile Default in gnome-terminal
+#script: ./gterm-newprofile.sh
+#tags: ohmyzsh_install
+
+- name: Install Snaps
+  snap:
+    name: "{{ item }}"
+  loop: "{{ snap_pkgs }}"
+  tags: snaps_install

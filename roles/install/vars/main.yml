@@ -1,0 +1,96 @@
+---
+
+remove_pkgs:
+  - drawing
+  - gnome-calendar
+  - gnote
+  - hexchat
+  - libreoffice*
+  - pix
+  - thunderbird*
+  - transmission*
+
+apt_key_urls:
+  - https://dl.google.com/linux/linux_signing_key.pub #GoogleChrome
+  - https://packages.microsoft.com/keys/microsoft.asc #VSCode
+  - https://www.virtualbox.org/download/oracle_vbox_2016.asc #VirtualBox
+  - https://apt.enpass.io/keys/enpass-linux.key #Enpass
+  - https://typora.io/linux/public-key.asc #Typora 
+ 
+apt_repo_urls:
+  - url: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main #GoogleChrome
+    filename: google-chrome
+  - url: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main #VSCode
+    filename: vscode
+  - url: deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian bionic contrib #VirtualBox
+    filename: virtualbox
+  - url: deb https://apt.enpass.io/ stable main #Enpass
+    filename: enpass
+  - url: deb https://typora.io/linux ./ #Typora
+    filename: typora
+
+apt_repo_ppa:
+  - url: ppa:stebbins/handbrake-releases #Handbrake
+    filename: ppa_handbrake
+  - url: ppa:graphics-drivers/ppa #NvidiaDrivers
+    filename: ppa_graphics
+  - url: ppa:sebastian-stenzel/cryptomator #Cryptomator
+    filename: cryptomator
+  - url: ppa:papirus/papirus #Papirus Icon Theme
+    filename: papirus_icon_theme
+  - url: ppa:snwh/ppa #Paper Icon Theme
+    filename: paper_icon_theme
+    
+pkgs_urls:
+  - "{{ url_deb_autokey.stdout_lines[0] }}" #AutoKey
+  - "{{ url_deb_autokey.stdout_lines[1] }}" #AutoKey
+  - "{{ url_deb_etcher.stdout }}" #BalenaEtcher
+  - "{{ url_deb_flameshot.stdout }}" #Flameshot
+  - https://repo.skype.com/latest/skypeforlinux-64.deb #Skype
+  - https://download.teamviewer.com/download/linux/teamviewer_amd64.deb #TeamViewer
+  - "{{ url_deb_vagrant.stdout }}" #Vagrant
+  - "{{ url_deb_franz.stdout }}" #Franz
+  - http://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/9126/wps-office_11.1.0.9126.XA_amd64.deb #WPSOffice
+
+pkgs:
+  - adb
+  - android-tools-adb
+  - awscli
+  - balena-etcher-electron
+  - build-essential
+  - code
+  - cryptomator
+  - enpass
+  - glances
+  - gnome-tweaks
+  - google-chrome-stable
+  - gparted
+  - handbrake-cli
+  - handbrake-gtk
+  - htop
+  - httpie
+  - inkscape
+  - intel-microcode
+  - jq
+  - libnotify-bin
+  - openssh-server
+  - paper-icon-theme
+  - papirus-icon-theme
+  - p7zip-full
+  - p7zip-rar
+  - python-psutil #Required by Ansible's dconf Module
+  - qbittorrent
+  - remmina
+  - remmina-plugin-rdp
+  - remmina-plugin-vnc
+  - snapd
+  - tmux
+  - typora
+  - uget
+  - vim
+  - virtualbox-6.1
+  - xclip
+  - zsh
+
+snap_pkgs:
+  - scrcpy

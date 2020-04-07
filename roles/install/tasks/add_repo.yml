@@ -1,0 +1,27 @@
+---
+
+- name: Adds Validation Keys for Additional Repositories
+  apt_key:
+    url: "{{ item }}"
+    state: present
+  loop: "{{ apt_key_urls }}"
+  tags: add_repo
+
+- name: Adds Additional URL Repositories
+  apt_repository:
+    repo: "{{ item.url }}"
+    state: present
+    filename: "{{ item.filename }}"
+    update_cache: no
+  loop: "{{ apt_repo_urls }}" 
+  tags: add_repo
+
+- name: Adds PPA Repositories
+  apt_repository:
+    repo: "{{ item.url }}"
+    codename: bionic
+    state: present
+    filename: "{{ item.filename }}"
+    update_cache: no
+  loop: "{{ apt_repo_ppa }}"
+  tags: add_ppa

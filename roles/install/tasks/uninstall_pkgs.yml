@@ -1,0 +1,11 @@
+---
+
+- name: Uninstall Packages
+  apt:
+    name: "{{ item }}"
+    state: absent
+    purge: yes
+    autoclean: yes
+    autoremove: yes
+  loop: "{{ remove_pkgs }}"
+  tags: apt_remove

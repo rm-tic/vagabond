@@ -1,0 +1,5 @@
+---
+# tasks file for install
+
+- include: uninstall_pkgs.yml
+- include: install_pkgs.yml

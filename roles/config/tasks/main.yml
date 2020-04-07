@@ -1,0 +1,4 @@
+---
+# tasks file for config
+
+- include: config_files.yml

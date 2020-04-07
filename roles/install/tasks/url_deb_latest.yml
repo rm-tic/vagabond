@@ -1,0 +1,36 @@
+---
+
+- name: Autokey .deb Package Latest Version URL
+  shell: >-
+    curl -s "https://api.github.com/repos/autokey/autokey/releases/latest" | egrep -o 'https.*(common|gtk).*all.deb'
+  register: url_deb_autokey
+  args:
+    warn: false
+  
+- name: Balena Etcher .deb Package Latest Version URL
+  shell: >-
+    curl -s "https://api.github.com/repos/balena-io/etcher/releases/latest" | egrep -o 'https.*amd64.deb'
+  register: url_deb_etcher
+  args:
+    warn: false
+
+- name: Flameshot .deb Package Latest Version URL
+  shell: >-
+    curl -s "https://api.github.com/repos/lupoDharkael/flameshot/releases/latest" | egrep -o 'https.*bionic_x86_64.deb'
+  register: url_deb_flameshot
+  args:
+    warn: false
+
+- name: Franz Meeting .deb Package Latest Version URL
+  shell: >-
+    curl -s "https://api.github.com/repos/meetfranz/franz/releases/latest" | egrep -o 'https.*amd64.deb'
+  register: url_deb_franz
+  args:
+    warn: false
+
+- name: Vagrant .deb Package Latest Version URL
+  shell: >-
+    curl -s https://releases.hashicorp.com/vagrant/$(curl -s https://releases.hashicorp.com/vagrant/ | egrep -o '([0-9]\.){2}[0-9]' | head -1)/ | egrep -o '/vagrant/([0-9].){2}[0-9]/.*x86_64.deb\"' | tr -d '"' | awk '{print "https://releases.hashicorp.com"$1}'
+  register: url_deb_vagrant
+  args:
+    warn: false

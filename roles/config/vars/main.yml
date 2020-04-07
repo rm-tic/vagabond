@@ -1,0 +1,34 @@
+---
+# vars file for config
+
+shell_cfg:
+  - .bashrc
+  - .zshrc
+
+file_cfg:
+  - .vimrc
+  - .tmux.conf
+
+theme_url:
+  - https://cinnamon-spices.linuxmint.com/files/themes/Adapta-Nokto.zip
+  - https://cinnamon-spices.linuxmint.com/files/themes/CBlack.zip
+
+theme_dir:
+  - "{{ ansible_env.HOME }}/.themes"
+  - "{{ ansible_env.HOME }}/Imagens/Wallpapers"
+
+pics:
+  - root_1920x1080.png
+  - root_2560x1080.png
+
+theme_cfg:
+- key: /org/cinnamon/desktop/wm/preferences/theme #Window Borders
+  value: "'CBlack'"
+- key: /org/cinnamon/desktop/interface/icon-theme #Icons
+  value: "'Paper'"
+- key: /org/cinnamon/desktop/interface/gtk-theme #Controls
+  value: "'CBlack'"
+- key: /org/cinnamon/theme/name #Desktop
+  value: "'CBlack'"
+- key: /org/cinnamon/desktop/background/picture-uri #Wallpaper
+  value: "'file://{{ ansible_env.HOME }}/Imagens/Wallpapers/root_1920x1080.png'"
