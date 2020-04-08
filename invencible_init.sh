@@ -129,7 +129,8 @@ function MAIN()
 
 echo
 echo "+----------------------------------+"
-echo "| Invencible                       |"
+echo "| Invencible (Ansible)             |"
+echo "| Project: Vagabond                |"
 echo "| Author: Rodrigo Martins (IceTux) |"
 echo "| Creation Date: 2020-03-30        |"
 echo "+----------------------------------+"
